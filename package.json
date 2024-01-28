@@ -1,7 +1,8 @@
 {
   "name": "regirstrar",
   "version": "1.0.0",
-  "description": "",
+  "description": "Backend for our event applicaiton",
+  "type": "module",
   "main": "server.js",
   "scripts": {
     "start": "node backend/server.js",
