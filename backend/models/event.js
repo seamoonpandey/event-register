@@ -5,6 +5,9 @@ const eventSchema=new mongoose.Schema({
         type: String,
         required: true
     },
+    titleImage: {
+        type: String,
+    },
     beginningDate: {
         type: Date,
         required: true
