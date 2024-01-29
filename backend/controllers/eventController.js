@@ -37,6 +37,9 @@ const getEventById = asyncHandler(async (req, res) => {
   }
 });
 
+// @desc    Post new event
+// @route   POST /api/events
+// @access  Private/Admin
 const postNewEvent = asyncHandler(async (req, res) => {
   const event = await Event.create(req.body);
 
