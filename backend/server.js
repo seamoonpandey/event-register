@@ -18,7 +18,7 @@ const app = express();
 app.use(cors());
 
 // Body parser middleware
-app.get(express.json());
+app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Cookie parser middleware
