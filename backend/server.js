@@ -2,7 +2,6 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
-import path from "path";
 dotenv.config();
 
 import { notFound, errorHandler } from "./middleware/errorHandler.js";
@@ -30,7 +29,6 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/events", eventRoutes);
-app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
 
 app.use(notFound);
 app.use(errorHandler);
