@@ -6,18 +6,14 @@ import Event from "../models/event.js";
 // @access  Public
 
 const getEvents = asyncHandler(async (req, res) => {
-  const events = await Event.aggregate([
-    {
-      $match: {
-        date: { $exists: true },
-      },
-    },
-    {
-      $sort: {
-        date: -1,
-      },
-    },
-  ]);
+  const events = await Event.find({
+    $or: [
+      { beginningDate: { $gte: new Date() } },
+      { beginningDate: { $lt: new Date() } },
+    ],
+  }).sort({
+    beginningDate: 1,
+  });
 
   res.json(events);
 });
