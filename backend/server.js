@@ -1,19 +1,20 @@
-import express from 'express';
-import cors from 'cors';
-import dotenv from 'dotenv';
-import cookieParser from 'cookie-parser';
+import express from "express";
+import cors from "cors";
+import dotenv from "dotenv";
+import cookieParser from "cookie-parser";
+import path from "path";
 dotenv.config();
 
-import { notFound, errorHandler } from './middleware/errorHandler.js';
+import { notFound, errorHandler } from "./middleware/errorHandler.js";
 
-import connectDb from './config/db.js';
-import eventRoutes from './routes/eventRoutes.js';
+import connectDb from "./config/db.js";
+import eventRoutes from "./routes/eventRoutes.js";
 
-const port=process.env.PORT||5000;
+const port = process.env.PORT || 5000;
 
 connectDb();
 
-const app=express();
+const app = express();
 
 app.use(cors());
 
@@ -24,16 +25,16 @@ app.use(express.urlencoded({ extended: true }));
 // Cookie parser middleware
 app.use(cookieParser());
 
-app.get('/', (req, res) => {
-    res.send("API is running..... I think so!!!!");
+app.get("/", (req, res) => {
+  res.send("API is running..... I think so!!!!");
 });
 
-app.use('/api/events', eventRoutes);
+app.use("/api/events", eventRoutes);
+app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
 
 app.use(notFound);
 app.use(errorHandler);
 
-
 app.listen(port, (req, res) => {
-    console.log(`Server listening on port ${port}`);
+  console.log(`Server listening on port ${port}`);
 });
