@@ -9,6 +9,7 @@ import { notFound, errorHandler } from "./middleware/errorHandler.js";
 import connectDb from "./config/db.js";
 import eventRoutes from "./routes/eventRoutes.js";
 import participantRoutes from "./routes/participantRoutes.js";
+import attendanceRoutes from "./routes/attendanceRoutes.js";
 
 const port = process.env.PORT || 5000;
 
@@ -31,6 +32,7 @@ app.get("/", (req, res) => {
 
 app.use("/api/events", eventRoutes);
 app.use("/api/participants", participantRoutes);
+app.use("/api/attendance", attendanceRoutes);
 
 app.use(notFound);
 app.use(errorHandler);
