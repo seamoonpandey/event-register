@@ -11,11 +11,13 @@ import "./assets/styles/index.css";
 
 import App from "./App";
 import HomeScreen from "./screens/HomeScreen.jsx";
+import EventScreen from "./screens/EventScreen.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
       <Route index={true} path="/" element={<HomeScreen />} />
+      <Route index={true} path="/events/:id" element={<EventScreen />} />
     </Route>
   )
 );

@@ -9,16 +9,19 @@ const HomeScreen = () => {
     useEffect(() => {
         axios.get(`${BASE_URL}/api/events`).then((response) => {
             setEvents(response.data);
-        }).catch((error) => { })
+        }).catch((error) => {
+        })
     }, [])
+
+
     return (
         events.map((event) => {
             return (
-                <div key={event._id}>
+                <a href={`/events/${event._id}`} key={event._id}>
                     <h1>{event.title}</h1>
                     <h2>{event.beginningDate}</h2>
                     <p>{event.description}</p>
-                </div>
+                </a>
             )
         })
     )
