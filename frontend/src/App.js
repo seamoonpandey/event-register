@@ -7,7 +7,7 @@ const App = () => {
   return (
     <>
       <Navbar />
-      <main className="py-3">
+      <main className="main">
         <Outlet />
       </main>
       <Footer />
