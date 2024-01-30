@@ -1,8 +1,26 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import axios from 'axios';
+import { BASE_URL } from '../constants';
 
 const HomeScreen = () => {
+    const [events, setEvents] = useState([]);
+    console.log(BASE_URL)
+
+    useEffect(() => {
+        axios.get(`${BASE_URL}/api/events`).then((response) => {
+            setEvents(response.data);
+        }).catch((error) => { })
+    }, [])
     return (
-        <div>HomeScreen</div>
+        events.map((event) => {
+            return (
+                <div key={event._id}>
+                    <h1>{event.title}</h1>
+                    <h2>{event.beginningDate}</h2>
+                    <p>{event.description}</p>
+                </div>
+            )
+        })
     )
 }
 
