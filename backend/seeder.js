@@ -1,6 +1,5 @@
 // seeder.js
 
-import mongoose from "mongoose";
 import dotenv from "dotenv";
 
 import events from "./data/events.js";

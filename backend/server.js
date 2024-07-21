@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
+import multer from "multer";
 dotenv.config();
 
 import { notFound, errorHandler } from "./middleware/errorHandler.js";
@@ -23,6 +24,7 @@ app.use(cors());
 // Body parser middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(multer().any());
 
 // Cookie parser middleware
 app.use(cookieParser());
